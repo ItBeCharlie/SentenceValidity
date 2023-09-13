@@ -7,7 +7,6 @@ from underlinks import draw_underlinks
 
 def main():
     sentence = input("Enter a sentence: ")
-    # sentence = "john likes a book which marie detests ."
     components = sentence_to_components(sentence)
     display_enums(components)
     valid, pairs = sentence_validity_preprocessing(components)
@@ -67,7 +66,7 @@ def sentence_validity(components, start, end, pairs=[]):
                 components, index + 1, end - 1, pairs
             )
             # Calculate depth of current component
-            depth = max(depth_inner, depth_outer) + 1
+            depth = max(depth_inner, depth_outer - 1) + 1
 
             # Add our new pair
             pairs.append((index, end, depth))
